@@ -34,6 +34,7 @@ def vigenere_encrypt(text, key):
 
 def vigenere_decrypt(cipher_text, key):
     original_text = []
+    key = key.upper()  # Переконуємось, що ключ у верхньому регістрі
     key_index = 0
     key_length = len(key)
 
@@ -49,14 +50,15 @@ def vigenere_decrypt(cipher_text, key):
                 original_text.append(new_char)
             else:
                 base = ord('a')
-                new_char = chr((ord(ch) - base - shift) % 26 + base)
+                new_char = chr((ord(ch) - base - shift + 26) % 26 + base)
                 original_text.append(new_char)
 
-            key_index += 1
+            key_index += 1  # Зміщуємо key_index тільки якщо символ - літера
         else:
             original_text.append(ch)
 
     return "".join(original_text)
+
 
 def main():
     # Зчитаємо текст з файлу plain.txt

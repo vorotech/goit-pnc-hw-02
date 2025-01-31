@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 def transposition_encrypt(text, key):
     num_cols = len(key)
     num_rows = len(text) // num_cols + (1 if len(text) % num_cols else 0)
